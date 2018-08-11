@@ -1,5 +1,5 @@
 require("dotenv").config();
-//Grab data from keys.js
+///Grab data from keys.js
 var keys = require('./keys.js');
 var request = require('request');
 var twitter = require('twitter');
@@ -54,16 +54,16 @@ switch(command){
 
 function showTweets(){
   //Display last 20 Tweets
-  var screenName = {screen_name: 'Amansha37261570'};
+  var screenName = {screen_name: 'stefanieding'};
   client.get('statuses/user_timeline', screenName, function(error, tweets, response){
     if(!error){
       for(var i = 0; i<tweets.length; i++){
         var date = tweets[i].created_at;
-        console.log("@Amansha37261570: " + tweets[i].text + " Created At: " + date.substring(0, 19));
+        console.log("@StefanieDing: " + tweets[i].text + " Created At: " + date.substring(0, 19));
         console.log("-----------------------");
         
         //adds text to log.txt file
-        fs.appendFile('log.txt', "@Amansha37261570: " + tweets[i].text + " Created At: " + date.substring(0, 19));
+        fs.appendFile('log.txt', "@StefanieDing: " + tweets[i].text + " Created At: " + date.substring(0, 19));
         fs.appendFile('log.txt', "-----------------------");
       }
     }else{
@@ -101,7 +101,7 @@ function spotifySong(song){
 }
 
 function omdbData(movie){
-  var omdbURL = 'http://www.omdbapi.com/?t=' + movie + '&plot=short&tomatoes=true';
+  var movieRequest = "http://www.omdbapi.com/?t=" + movie_name + "&y=&plot=short&apikey=trilogy";
 
   request(omdbURL, function (error, response, body){
     if(!error && response.statusCode == 200){
@@ -138,7 +138,7 @@ function omdbData(movie){
 
       //adds text to log.txt
       fs.appendFile('log.txt', "-----------------------");
-      fs.appendFile('log.txt', "If you haven't watched 'Mr. Nobody,' then you should: http://www.imGdb.com/title/tt0485947/");
+      fs.appendFile('log.txt', "If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
       fs.appendFile('log.txt', "It's on Netflix!");
     }
   });
